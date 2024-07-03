@@ -1,0 +1,138 @@
+:root {
+    --bodyBG: hsla(0, 0%, 89%, 1);
+    --txt--clr1: hsla(0, 0%, 25%, 1);
+    --accordCon--clr: hsla(0, 0%, 100%, 1);
+    --title--clr: #000;
+    --main--clr: hsla(180, 68%, 40%, 1);
+}
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: rubik;
+    font-size: 14px;
+}
+
+@font-face {
+    font-family: Rubik;
+    font-weight: normal;
+    src: url(./assets/fonts/Rubik/static/Rubik-Regular.ttf);
+}
+
+
+body {
+    height: 100vh;
+    width: 100%;
+    background: var(--bodyBG);
+    color: var(--txt--clr1);
+    display: grid;
+    place-content: center;
+}
+
+h1 {
+    --h1Font: 18px;
+    color: var(--main--clr);
+    font-size: var(--h1Font);
+}
+
+.icon {
+    --iconBorder--clr: hsla(0, 10%, 85%, 1);
+    position: relative;
+
+    text-align: center;
+    font-weight: bold;
+    width: 23px;
+    height: 23px;
+    border: 2px solid var(--iconBorder--clr);
+    border-radius: 100px;
+}
+
+.icon::before {
+    --iconSize: 14px;
+    --icon--clr: #000;
+    content: "v";
+    top: 0;
+    left: 0;
+    font-size: var(--iconSize);
+    color: var(--icon--clr);
+}
+
+input[type=radio] {
+    display: none;
+    /* visibility: hidden; */
+}
+
+.accordion {
+    /* border: 2px solid red; */
+    margin-bottom: 1.5rem;
+}
+
+/* Selecting the accordion container ID */
+#accord--con {
+    padding: 3rem;
+    border-radius: 10px;
+    width: 700px;
+    background: var(--accordCon--clr);
+}
+
+/* selecting the according header that contain the  introduction */
+.accord--header {
+    margin-bottom: 1rem;
+}
+
+.accord--header :is(p) {
+    margin-top: 0.6rem;
+    word-break: keep-all;
+}
+
+/* selecting the question container to align inline using flex */
+
+.question--con {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.2rem;
+}
+
+.ques {
+    --quesFont: 16px;
+    /* font-weight: bold; */
+    font-size: var(--quesFont);
+    letter-spacing: 1px;
+}
+
+.reply--con {
+    --reply--bg: hsla(180, 68%, 80%, 0.5);
+    display: none;
+    margin-top: 1.3rem;
+    padding: 1.5rem 0.5rem 0.8rem 0.5rem;
+    line-height: 20px;
+    border-radius: 3px;
+    /* border: 2px solid red; */
+    background-color: var(--reply--bg);
+}
+
+/* The tricks below  ⬇️*/
+input[type="radio"]:checked~.reply--con {
+    display: block;
+}
+
+input[type=radio]:checked+label>.icon {
+    position: relative;
+    border: 2px solid var(--main--clr);
+}
+
+input[type=radio]:checked+label>.icon::before {
+    content: "v";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    transform: rotate(180deg);
+    font-weight: bold;
+    color: var(--main--clr);
+
+}
