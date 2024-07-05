@@ -25,7 +25,7 @@
 
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     background: var(--bodyBG);
     color: var(--txt--clr1);
@@ -40,15 +40,16 @@ h1 {
 }
 
 .icon {
+
     --iconBorder--clr: hsla(0, 10%, 85%, 1);
     position: relative;
-
     text-align: center;
     font-weight: bold;
     width: 23px;
     height: 23px;
     border: 2px solid var(--iconBorder--clr);
     border-radius: 100px;
+    max-width: 100%;
 }
 
 .icon::before {
@@ -134,5 +135,67 @@ input[type=radio]:checked+label>.icon::before {
     transform: rotate(180deg);
     font-weight: bold;
     color: var(--main--clr);
+
+}
+
+/* working on the sizes responsiveness */
+
+@media (max-width: 800px) {
+    body {
+        padding: 5rem;
+    }
+
+    #accord--con {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #accord--con {
+        width: 350px;
+        padding: 2rem;
+    }
+
+
+    .question--con {
+        justify-content: baseline;
+        gap: 0rem;
+
+    }
+
+    .ques {
+        --quesFont: 14px;
+        margin: 0 1rem 0 0;
+
+    }
+
+    /* .accordion--1 label {
+   
+    } */
+
+
+
+    input[type=radio]:checked+label>.icon::before {
+        content: "v";
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        transform: rotate(180deg);
+        font-weight: bold;
+        color: var(--main--clr);
+
+    }
+
+    .reply--con {
+        font-size: 12px;
+    }
+
+    .icon {
+        text-align: center;
+        min-width: 22px;
+        height: 22px;
+        /* border-radius: 0; */
+        /* border: 2px solid red; */
+    }
 
 }
